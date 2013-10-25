@@ -18,16 +18,13 @@ class PagesController < ApplicationController
   def show
     @page = Page.find params[:id]
     @response = JSON.parse(HTTParty.get("#{ FB_ENDPOINT }/#{ @page.fb_id }/posts", 
-                  query: { access_token: FB_ACCESS_TOKEN }))
+                  query: { access_token: FB_ACCESS_TOKEN, limit: 10 }))
+
     if @response["data"]
       @response = @response["data"]
     else
       flash[:error] = "Erreur de chargement des messages"
       redirect_to root_path
     end
-
-  end
-
-  def destroy
   end
 end
