@@ -1,16 +1,14 @@
-.notice
-%h2 Indiquez l'id de la page
-.search-form{ data: { endpoint: FB_ENDPOINT, access_token: FB_ACCESS_TOKEN } }
-  = text_field_tag "fb-page-id", "", class: "fb-page-id pull-left"
-  = submit_tag "Chercher", class: "submit btn btn-success pull-left"
-  .clearfix
 
-.page-data
-  %h2 Nom
-  .name
-  %h2 Nombre de likes
-  .likes
-  %h2 Description
-  .about
-  %h2 Categorie
-  .category
+.page_form
+  %h2 Ajoutez une page
+  = simple_form_for @page do |f|
+    = f.input :fb_id, class: "fb-page-id"
+    .pull-right= f.submit "Ajouter", class: "submit btn btn-success"
+    .clearfix
+  
+
+.page-list
+  - @pages.each do |page|
+    = link_to page do  
+      = render partial: "shared/page_item", locals: { page: page }
+        

@@ -11,4 +11,7 @@
         .container
           %h1 Facebook page data
     .container
+      .flash
+        .notice= flash[:notice]
+        .error= flash[:error]
       = yield

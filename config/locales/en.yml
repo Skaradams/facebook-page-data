@@ -2,4 +2,11 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      page:
+        fb_id: "Id de la page"
+
+  time:
+    formats:
+      default: "%d/%m/%Y à %H:%m"

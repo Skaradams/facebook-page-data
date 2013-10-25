@@ -1,0 +1,12 @@
+.back= link_to "Retourner à la liste", root_path
+
+= render partial: "shared/page_item", locals: { page: @page }
+
+.post-list
+  - @response.each do |post|
+    .post
+      .name= post["from"]["name"]
+      .pull-left.picture= image_tag post["picture"]
+      .pull-left.message= post["message"]
+      .clearfix
+      .date= "publié le #{ l post["created_time"].to_time }"
